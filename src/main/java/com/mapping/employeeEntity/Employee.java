@@ -3,6 +3,9 @@ package com.mapping.employeeEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -22,7 +25,12 @@ public class Employee {
     private  int phone;
     private  String website;
 
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_id")
-    private  Address address;
+    private List<Address> address = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_office_id")
+    private Office office;
 }
