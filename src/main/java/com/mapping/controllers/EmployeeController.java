@@ -17,7 +17,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping("create-employee")
+    @PostMapping("createEmp")
     public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
         Employee newEmployee = employeeService.createEmployee(employee);
         return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
@@ -35,4 +35,6 @@ public class EmployeeController {
         Employee emp = employeeService.getEmployee(id);
         return new ResponseEntity<>(emp,HttpStatus.OK);
     }
+
+
 }
